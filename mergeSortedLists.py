@@ -18,7 +18,8 @@ class Solution:
         firstItemFirstList = list1
         zeroItemFirstList = list1
         while firstItemSecondList is not None:
-            print("List 1 Item 0:{} List 1 Item 0:{} List 2 Item 1:{}".format(zeroItemFirstList.val, firstItemFirstList.val, firstItemSecondList.val))
+            print("A0:{} A1:{} B1:{}".format(zeroItemFirstList.val, firstItemFirstList.val, firstItemSecondList.val))
+
             #take first list
             #take first item from second list
             if firstItemFirstList is None:
@@ -35,23 +36,33 @@ class Solution:
 
             #If equal to 2 then put the number on the right
             elif firstItemSecondList.val == firstItemFirstList.val: 
-                firstItemSecondList.next = firstItemFirstList.next
-                firstItemFirstList.next = firstItemSecondList
+                firstItemFirstList.next = ListNode(firstItemSecondList.val, firstItemFirstList.next)
+
+                #Look at the next one
                 firstItemSecondList = firstItemSecondList.next
+                firstItemFirstList = list1
+                zeroItemFirstList = list1
+                
                 print ("Inserting to the right")
+                printAll(list1)
 
             #If less than 2 then put the number on the left
             elif firstItemSecondList.val < firstItemFirstList.val: 
-                zeroItemFirstList.next = firstItemSecondList
-                firstItemSecondList.next = firstItemFirstList
+                zeroItemFirstList.next = ListNode(firstItemSecondList.val, firstItemFirstList)
+                
+                #Look at the next one
                 firstItemSecondList = firstItemSecondList.next
+                firstItemFirstList = list1
+                zeroItemFirstList = list1
+                
                 print ("Inserting to the left")
+                printAll(list1)
             #remove from second list
-            firstItemSecondList = firstItemSecondList.next
+            
         return list1
 
-
-        # Change to look back
-        # Changed to use class
-        # Changed to elif
-        # Added null cases
+def printAll(list1: Optional[ListNode]):
+    currentNode = list1
+    while currentNode is not None:
+        print(currentNode.val)
+        currentNode = currentNode.next
