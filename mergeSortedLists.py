@@ -15,7 +15,7 @@ class Solution:
             return list1
         
         # Guarunteed that either list 1 or list 2 is not null here
-        currentListNode = None
+        currentListNode = sortedListHead = ListNode()
         currentL1Node = list1
         currentL2Node = list2
         while currentL1Node is not None or currentL2Node is not None:
@@ -23,52 +23,38 @@ class Solution:
             print(currentL2Node)
 
             if currentL1Node is None:
-                if currentListNode is None:
-                    currentListNode = ListNode(currentL2Node.val)
-                    sortedListHead = currentListNode
-                else:
-                    currentListNode.next = ListNode(currentL2Node.val)
-                    currentListNode = currentListNode.next
+                currentListNode.next = ListNode(currentL2Node.val)
+                currentListNode = currentListNode.next
 
                 currentL2Node = currentL2Node.next
                 
                 print("L1 is empty")
 
             elif currentL2Node is None:
-                if currentListNode is None:
-                    currentListNode = ListNode(currentL1Node.val)
-                    sortedListHead = currentListNode
-                else:
-                    currentListNode.next = ListNode(currentL1Node.val)
-                    currentListNode = currentListNode.next
+                currentListNode.next = ListNode(currentL1Node.val)
+                currentListNode = currentListNode.next
 
                 currentL1Node = currentL1Node.next
                 
                 print("L2 is empty")
             
             elif currentL1Node.val >= currentL2Node.val:
-                if currentListNode is None:
-                    currentListNode = ListNode(currentL2Node.val)
-                    sortedListHead = currentListNode
-                else:
-                    currentListNode.next = ListNode(currentL2Node.val)
-                    currentListNode = currentListNode.next
+                currentListNode.next = ListNode(currentL2Node.val)
+                currentListNode = currentListNode.next
+
                 currentL2Node = currentL2Node.next
                 
                 print("L1 >= L2 ")
 
             elif currentL1Node.val < currentL2Node.val:
-                if currentListNode is None:
-                    currentListNode = ListNode(currentL1Node.val)
-                    sortedListHead = currentListNode
-                else:
-                    currentListNode.next = ListNode(currentL1Node.val)
-                    currentListNode = currentListNode.next
+                currentListNode.next = ListNode(currentL1Node.val)
+                currentListNode = currentListNode.next
+
                 currentL1Node = currentL1Node.next
                 
                 print("L1 < L2 ")
             printAll(sortedListHead)
-        return sortedListHead
+        return sortedListHead.next
 
 def printAll(list1: Optional[ListNode]):
     currentNode = list1
