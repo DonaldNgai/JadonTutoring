@@ -15,36 +15,46 @@ class Solution:
             return list1
         
         # Guarunteed that either list 1 or list 2 is not null here
-        sortedListHead = ListNode()
+        sortedListHead = None
         currentListNode = sortedListHead
         currentL1Node = list1
         currentL2Node = list2
         while currentL1Node is not None and currentL2Node is not None:
             printAll(sortedListHead)
             if currentL1Node is None:
-                currentListNode.val = currentL2Node.val
-                currentListNode.next = currentL2Node.next
+                if currentListNode is None:
+                    currentListNode = currentL2Node.val
+                else:
+                    currentListNode.next = ListNode(currentL2Node.val)
+
                 currentL2Node = currentL2Node.next
                 currentListNode = currentListNode.next
                 print("L1 is empty")
 
             elif currentL2Node is None:
-                currentListNode.val = currentL1Node.val
-                currentListNode.next = currentL1Node.next
+                if currentListNode is None:
+                    currentListNode = currentL1Node.val
+                else:
+                    currentListNode.next = ListNode(currentL1Node.val)
+
                 currentL1Node = currentL1Node.next
                 currentListNode = currentListNode.next
                 print("L2 is empty")
             
             elif currentL1Node.val >= currentL2Node.val:
-                currentListNode.val = currentL2Node.val
-                currentListNode.next = currentL2Node.next
+                if currentListNode is None:
+                    currentListNode = ListNode(currentL2Node.val)
+                else:
+                    currentListNode.next = ListNode(currentL2Node.val)
                 currentL2Node = currentL2Node.next
                 currentListNode = currentListNode.next
                 print("L1 >= L2 ")
 
             elif currentL1Node.val < currentL2Node.val:
-                currentListNode.val = currentL1Node.val
-                currentListNode.next = currentL1Node.next
+                if currentListNode is None:
+                    currentListNode = currentL1Node.val
+                else:
+                    currentListNode.next = ListNode(currentL1Node.val)
                 currentL1Node = currentL1Node.next
                 currentListNode = currentListNode.next
                 print("L1 < L2 ")
