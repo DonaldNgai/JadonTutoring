@@ -36,12 +36,14 @@ class Solution:
             elif firstItemSecondList.val == firstItemFirstList.val: 
                 firstItemSecondList.next = firstItemFirstList.next
                 firstItemFirstList.next = firstItemSecondList
+                firstItemSecondList = firstItemSecondList.next
                 print ("Inserting to the right")
 
             #If less than 2 then put the number on the left
             elif firstItemSecondList.val < firstItemFirstList.val: 
                 zeroItemFirstList.next = firstItemSecondList
                 firstItemSecondList.next = firstItemFirstList
+                firstItemSecondList = firstItemSecondList.next
                 print ("Inserting to the left")
             #remove from second list
             firstItemSecondList = firstItemSecondList.next
