@@ -18,6 +18,7 @@ class Solution:
         firstItemFirstList = list1
         zeroItemFirstList = list1
         while firstItemSecondList is not None:
+            print("List 1 Item 0:{} List 1 Item 0:{} List 2 Item 1:{}".format(zeroItemFirstList.val, firstItemFirstList.val, firstItemSecondList.val))
             #take first list
             #take first item from second list
             if firstItemFirstList is None:
