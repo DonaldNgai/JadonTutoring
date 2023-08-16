@@ -18,7 +18,7 @@ class Solution:
         currentListNode = sortedListHead = ListNode()
         currentL1Node = list1
         currentL2Node = list2
-        while currentL1Node is not None or currentL2Node is not None:
+        while currentL1Node or currentL2Node:
             print(currentL1Node)
             print(currentL2Node)
 
