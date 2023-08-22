@@ -1,8 +1,10 @@
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+# Whiteboard: https://miro.com/welcomeonboard/UTlzUUR3dXA4U3MyVmVwSXd0M0pweVA5UTRGRFJlOThDYnZXMVhoZlBMM0RqMnIxN1hYSWxacTBkM05kSlBSR3wzNDU4NzY0NTYxNzg4MTkxMzI0fDI=?share_link_id=386768249024
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
