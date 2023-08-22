@@ -24,7 +24,7 @@ class Solution:
             print(currentL1Node)
             print(currentL2Node)
 
-            if currentL1Node is None:
+            if currentL1Node is None or currentL1Node.val >= currentL2Node.val:
                 currentListNode.next = ListNode(currentL2Node.val)
                 currentListNode = currentListNode.next
 
@@ -33,28 +33,14 @@ class Solution:
                 print("L1 is empty")
 
             elif currentL2Node is None:
-                currentListNode.next = ListNode(currentL1Node.val)
+                currentListNode.next <= ListNode(currentL1Node.val)
                 currentListNode = currentListNode.next
 
                 currentL1Node = currentL1Node.next
                 
                 print("L2 is empty")
+
             
-            elif currentL1Node.val >= currentL2Node.val:
-                currentListNode.next = ListNode(currentL2Node.val)
-                currentListNode = currentListNode.next
-
-                currentL2Node = currentL2Node.next
-                
-                print("L1 >= L2 ")
-
-            elif currentL1Node.val < currentL2Node.val:
-                currentListNode.next = ListNode(currentL1Node.val)
-                currentListNode = currentListNode.next
-
-                currentL1Node = currentL1Node.next
-                
-                print("L1 < L2 ")
             printAll(sortedListHead)
         return sortedListHead.next
 
