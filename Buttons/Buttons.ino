@@ -1,7 +1,9 @@
 using namespace std;
-#include <string>
-#include "dummy.cpp"
-
+// #include "dummy.cpp"
+// #include <vector>
+#include <Vector.h>
+#define NUMBER_OF_BLOCKS 5
+#define STARTING_PIN 4
 
 class block
 {
@@ -10,10 +12,7 @@ class block
     block(int _ledPin)
     {
         ledPin = _ledPin;
-    }
-    void print()
-    {
-        // Serial.print("Hello");
+        setPinmode();
     }
     void blink()
     {
@@ -24,36 +23,30 @@ class block
         delay(1000);    
     }    
   private:
-    void turnOn()
+    void setPinmode()
     {
-
+       pinMode(ledPin, OUTPUT);
     }
-    void turnOff()
-    {
 
-    }
 };
 
 // Create an int called LED_BUILTIN
 
-int LED_BUILTIN2 = 2;
-int LED_BUILTIN3 = 3;
+Vector<block> objects;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(LED_BUILTIN2, OUTPUT);
-  pinMode(LED_BUILTIN3, OUTPUT);
+  for (int i; i < NUMBER_OF_BLOCKS; i++)
+  {
+    objects.push_back(block(STARTING_PIN + i));
+  }
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(LED_BUILTIN2, HIGH);  // turn the LED on (HIGH is the voltage level)
-  delay(1000);                      // wait for a second
-  digitalWrite(LED_BUILTIN2, LOW);   // turn the LED off by making the voltage LOW
-  delay(1000);   
-
-  digitalWrite(LED_BUILTIN3, HIGH);  // turn the LED on (HIGH is the voltage level)
-  delay(1000);                      // wait for a second
-  digitalWrite(LED_BUILTIN3, LOW);   // turn the LED off by making the voltage LOW
-  delay(1000);   
+  for (int i; i < NUMBER_OF_BLOCKS; i++)
+  {
+    objects[i].blink();
+  }
+ 
 }
