@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+
 
 def getLines(filepath):
     testsite_array = []
@@ -14,23 +16,37 @@ def getInputs(path):
     print (abs_file_path)
     input = getLines(abs_file_path)
     for key, value in enumerate(input):
-        print("key", key, ", value", value)
-        print()
-        
+        print("key:", key, " value:", value)
     return input
 
 def checkAnswer(path, answer):
     file_dir = os.path.dirname(os.path.realpath('__file__'))
     abs_file_path = os.path.join(file_dir, path)
     output = getLines(abs_file_path)
-    # for key, value in enumerate(output):
-    #     print("value", value)
-    #     print("key", key)
-    if answer == output[0]:
-        print("WOOOHOOOOOO")
-    else:
-        print ("Incorrect")
-     
+    for key, value in enumerate(output):
+        print("Answer: ", value)
 
+    if answer == output[0]:
+        print("Correct")
+    else:
+        print ("!!!! Incorrect !!!!")
+        print ("Correct answer is: ", value, " Answer function returned: ", answer)
+     
+def checkAnswers(question, answerFunc):
+    file_dir = os.path.dirname(os.path.realpath('__file__'))
+    rel_path = "junior/" + question 
+    questionDir = os.path.join(file_dir, rel_path)
+    testCases = []
+
+    for file in os.listdir(questionDir):
+        if file.endswith(".in"):   
+          testCases.append(os.path.join(questionDir, file))
+
+    for file in testCases:
+        inputs = getInputs(file)
+        answer = answerFunc(inputs)
+        checkAnswer(os.path.join(questionDir, Path(file).stem + ".out"), answer)
+        print()      
+    #    
     # print(output[key])
 
