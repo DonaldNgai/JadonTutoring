@@ -13,9 +13,10 @@ def getInputs(path):
     abs_file_path = os.path.join(file_dir, path)
     print (abs_file_path)
     input = getLines(abs_file_path)
-    # for key, value in enumerate(input):
-    #     print("value", value)
-    #     print("key", key)
+    for key, value in enumerate(input):
+        print("key", key, ", value", value)
+        print()
+        
     return input
 
 def checkAnswer(path, answer):
