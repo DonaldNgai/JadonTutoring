@@ -9,24 +9,27 @@ j1Input = getInputs(relpath)
 # output =730
 
 # //WRITE HERE
-n = int(input())
+def answer(inputs):
+    n = int(inputs[0])
 
-availability = ["", "", "", "", ""]
+    availability = ["", "", "", "", ""]
 
-for _ in range(n):
-    person_availability = input()
-    for i in range(5):
-        availability[i] += person_availability[i]
+    for l in range(n):
+        person_availability = inputs[l + 1]
+        for i in range(5):
+            availability[i] += person_availability[i]
 
-max_attendance = 0
-max_attendance_days = []
+    max_attendance = 0
+    max_attendance_days = []
 
-for day, availability_data in enumerate(availability, start=1):
-    attendance = availability_data.count("Y")
-    if attendance > max_attendance:
-        max_attendance = attendance
-        max_attendance_days = [day]
-    elif attendance == max_attendance:
-        max_attendance_days.append(day)
+    for day, availability_data in enumerate(availability, start=1):
+        attendance = availability_data.count("Y")
+        if attendance > max_attendance:
+            max_attendance = attendance
+            max_attendance_days = [day]
+        elif attendance == max_attendance:
+            max_attendance_days.append(day)
 
-print(max_attendance_days)
+    print(max_attendance_days)
+    return max_attendance_days
+checkAnswers("j3", answer)

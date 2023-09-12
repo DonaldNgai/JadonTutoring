@@ -15,4 +15,4 @@ if j1Input[0] > j1Input[1]:
 print ("Output: ", output)
 
 relpath = "junior\j1\j1.01.out"
-checkAnswer(relpath, output)
+checkAnswers(relpath, output)
