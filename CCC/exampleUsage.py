@@ -7,3 +7,14 @@ def answer(inputs):
     return output
 
 checkAnswers("j1", answer)
+
+
+
+number  = 70
+if number < 80:
+    print("hello")
+if number < 60 and number >= 0:
+    print("F")
+else:
+    print("a")
+
